@@ -6,4 +6,4 @@ TDD practice project using a simple NodeJS app, with some basic examples.
 
 - Copy the files locally in your machine
 - run `npm install`
-- and then run `npm test` to run all test
+- and then run `npm test` to run all tests for both js files
