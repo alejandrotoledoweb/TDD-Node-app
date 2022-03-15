@@ -1,4 +1,4 @@
-import { translate } from './input';
+import { translate } from './translator';
 
 describe('Input Test', () => {
   it('translates d to half a dev day', () => {
