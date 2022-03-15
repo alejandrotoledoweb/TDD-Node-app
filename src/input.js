@@ -1,25 +1,19 @@
-const parse = (c) => {
-  switch (c) {
-    case 'd':
-      return { status: 'Dev', effort: 0.5 };
-    case 'D':
-      return { status: 'Dev', effort: 1.0 };
-    case 'q':
-      return { status: 'QA', effort: 0.5 };
-  }
+const dict = {
+  d: { status: 'Dev', effort: 0.5 },
+  D: { status: 'Dev', effort: 1.0 },
+  q: { status: 'QA', effort: 0.5 },
+  Q: { status: 'QA', effort: 1.0 }
 };
 
-const translate = (input) => {
-  const state = {
-    Dev: 0,
-    QA: 0
-  };
+const parse = (c) => dict[c];
 
-  input.split('').forEach((c) => {
-    const { status, effort } = parse(c);
-    state[status] = state[status] + effort;
-  });
-  return state;
+const translate = (input) => {
+  const items = input.split('');
+  return items.reduce((accumulator, current) => {
+    const { status, effort } = parse(current);
+    accumulator[status] = (accumulator[status] || 0) + effort;
+    return accumulator;
+  }, {});
 };
 
 export { translate };
